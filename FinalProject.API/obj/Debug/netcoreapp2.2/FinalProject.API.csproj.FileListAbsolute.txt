@@ -1,0 +1,14 @@
+C:\Users\sdialogo\Documents\Training\Final Project\FinalProject.API\FinalProject.API\bin\Debug\netcoreapp2.2\FinalProject.API.deps.json
+C:\Users\sdialogo\Documents\Training\Final Project\FinalProject.API\FinalProject.API\bin\Debug\netcoreapp2.2\FinalProject.API.runtimeconfig.json
+C:\Users\sdialogo\Documents\Training\Final Project\FinalProject.API\FinalProject.API\bin\Debug\netcoreapp2.2\FinalProject.API.runtimeconfig.dev.json
+C:\Users\sdialogo\Documents\Training\Final Project\FinalProject.API\FinalProject.API\bin\Debug\netcoreapp2.2\FinalProject.API.dll
+C:\Users\sdialogo\Documents\Training\Final Project\FinalProject.API\FinalProject.API\bin\Debug\netcoreapp2.2\FinalProject.API.pdb
+C:\Users\sdialogo\Documents\Training\Final Project\FinalProject.API\FinalProject.API\obj\Debug\netcoreapp2.2\FinalProject.API.csproj.CoreCompileInputs.cache
+C:\Users\sdialogo\Documents\Training\Final Project\FinalProject.API\FinalProject.API\obj\Debug\netcoreapp2.2\FinalProject.API.RazorAssemblyInfo.cache
+C:\Users\sdialogo\Documents\Training\Final Project\FinalProject.API\FinalProject.API\obj\Debug\netcoreapp2.2\FinalProject.API.RazorAssemblyInfo.cs
+C:\Users\sdialogo\Documents\Training\Final Project\FinalProject.API\FinalProject.API\obj\Debug\netcoreapp2.2\FinalProject.API.AssemblyInfoInputs.cache
+C:\Users\sdialogo\Documents\Training\Final Project\FinalProject.API\FinalProject.API\obj\Debug\netcoreapp2.2\FinalProject.API.AssemblyInfo.cs
+C:\Users\sdialogo\Documents\Training\Final Project\FinalProject.API\FinalProject.API\obj\Debug\netcoreapp2.2\FinalProject.API.RazorTargetAssemblyInfo.cache
+C:\Users\sdialogo\Documents\Training\Final Project\FinalProject.API\FinalProject.API\obj\Debug\netcoreapp2.2\FinalProject.API.dll
+C:\Users\sdialogo\Documents\Training\Final Project\FinalProject.API\FinalProject.API\obj\Debug\netcoreapp2.2\FinalProject.API.pdb
+C:\Users\sdialogo\Documents\Training\Final Project\FinalProject.API\FinalProject.API\obj\Debug\netcoreapp2.2\FinalProject.API.csprojAssemblyReference.cache
