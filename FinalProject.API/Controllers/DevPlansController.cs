@@ -57,5 +57,34 @@ namespace FinalProject.API.Controllers
 
             return CreatedAtRoute("GetDevPlan", new { id = newDevPlan.Id}, newDevPlan);
         }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateDevPlan(int id, [FromBody] DevPlanWrapperDTO devPlan)
+        {
+            if (devPlan == null)
+            {
+                return BadRequest();
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var devPlanToUpdate = DevPlansDataStore.Current.DevPlans.FirstOrDefault(d => d.Id == id);
+            if(devPlanToUpdate == null)
+            {
+                return NotFound();
+            }
+
+            //full update
+            devPlanToUpdate.Title = devPlan.Title;
+            devPlanToUpdate.Description = devPlan.Description;
+            devPlanToUpdate.EmployeeId = devPlan.EmployeeId;
+            devPlanToUpdate.StatusCode = devPlan.StatusCode;
+            devPlanToUpdate.DueDate = devPlan.DueDate;
+
+            return NoContent();
+        }
     }
 }

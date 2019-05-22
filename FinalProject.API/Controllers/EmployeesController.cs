@@ -51,12 +51,42 @@ namespace FinalProject.API.Controllers
                 FullName = employee.FullName,
                 Archived = employee.Archived,
                 HireDate = employee.HireDate
-    };
+            };
 
             var currentEmployees = EmployeesDataStore.Current.Employees;
             currentEmployees.Add(newEmployee);
 
             return CreatedAtRoute("GetEmployee", new { id = newEmployee.Id }, newEmployee);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateEmployee(int id, [FromBody] EmployeeWrapperDTO employee)
+        {
+            if (employee == null)
+            {
+                return BadRequest();
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var employeeToUpdate = EmployeesDataStore.Current.Employees.FirstOrDefault(e => e.Id == id);
+            if (employeeToUpdate == null)
+            {
+                return NotFound();
+            }
+
+            //full update
+            employeeToUpdate.FirstName = employee.FirstName;
+            employeeToUpdate.MiddleName = employee.MiddleName;
+            employeeToUpdate.LastName = employee.LastName;
+            employeeToUpdate.FullName = employee.FullName;
+            employeeToUpdate.Archived = employee.Archived;
+            employeeToUpdate.HireDate = employee.HireDate;
+
+            return NoContent();
         }
     }
 }
