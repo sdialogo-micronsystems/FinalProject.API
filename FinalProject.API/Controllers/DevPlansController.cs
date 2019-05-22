@@ -86,5 +86,21 @@ namespace FinalProject.API.Controllers
 
             return NoContent();
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteDevPlan(int id)
+        {
+            var devPlan = DevPlansDataStore.Current.DevPlans.FirstOrDefault(d => d.Id == id);
+
+            if (devPlan == null)
+            {
+                return NotFound();
+            }
+
+            var currentDevPlans = DevPlansDataStore.Current.DevPlans;
+            currentDevPlans.Remove(devPlan);
+
+            return NoContent();
+        }
     }
 }

@@ -88,5 +88,21 @@ namespace FinalProject.API.Controllers
 
             return NoContent();
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteEmployee(int id)
+        {
+            var employee = EmployeesDataStore.Current.Employees.FirstOrDefault(e => e.Id == id);
+
+            if (employee == null)
+            {
+                return NotFound();
+            }
+
+            var currentEmployees = EmployeesDataStore.Current.Employees;
+            currentEmployees.Remove(employee);
+
+            return NoContent();
+        }
     }
 }
