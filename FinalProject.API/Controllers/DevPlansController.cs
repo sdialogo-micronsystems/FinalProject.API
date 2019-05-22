@@ -77,14 +77,13 @@ namespace FinalProject.API.Controllers
                 return NotFound();
             }
 
-            //full update
             devPlanToUpdate.Title = devPlan.Title;
             devPlanToUpdate.Description = devPlan.Description;
             devPlanToUpdate.EmployeeId = devPlan.EmployeeId;
             devPlanToUpdate.StatusCode = devPlan.StatusCode;
             devPlanToUpdate.DueDate = devPlan.DueDate;
 
-            return NoContent();
+            return CreatedAtRoute("GetDevPlan", new { id = devPlanToUpdate.Id }, devPlanToUpdate);
         }
 
         [HttpDelete("{id}")]
@@ -100,7 +99,7 @@ namespace FinalProject.API.Controllers
             var currentDevPlans = DevPlansDataStore.Current.DevPlans;
             currentDevPlans.Remove(devPlan);
 
-            return NoContent();
+            return GetDevPlans();
         }
     }
 }

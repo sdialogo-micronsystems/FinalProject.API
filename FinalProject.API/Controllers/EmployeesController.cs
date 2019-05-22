@@ -78,7 +78,6 @@ namespace FinalProject.API.Controllers
                 return NotFound();
             }
 
-            //full update
             employeeToUpdate.FirstName = employee.FirstName;
             employeeToUpdate.MiddleName = employee.MiddleName;
             employeeToUpdate.LastName = employee.LastName;
@@ -86,7 +85,7 @@ namespace FinalProject.API.Controllers
             employeeToUpdate.Archived = employee.Archived;
             employeeToUpdate.HireDate = employee.HireDate;
 
-            return NoContent();
+            return CreatedAtRoute("GetEmployee", new { id = employeeToUpdate.Id }, employeeToUpdate);
         }
 
         [HttpDelete("{id}")]
@@ -102,7 +101,7 @@ namespace FinalProject.API.Controllers
             var currentEmployees = EmployeesDataStore.Current.Employees;
             currentEmployees.Remove(employee);
 
-            return NoContent();
+            return GetEmployees();
         }
     }
 }
