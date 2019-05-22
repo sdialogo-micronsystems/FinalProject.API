@@ -28,12 +28,18 @@ namespace FinalProject.API.Controllers
 
             return Ok(devPlanReturn);
         }
+
         [HttpPost("create")] 
         public IActionResult CreateDevPlan([FromBody] DevPlanDTO devPlan)
         {
             if (devPlan == null)
             {
                 return BadRequest();
+            }
+
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
             }
 
             var newDevPlan = new DevPlanDTO()
