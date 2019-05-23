@@ -1,25 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FinalProject.API.Models
+namespace FinalProject.API.Entities
 {
-    public class EmployeeDTO
+    public class Employee
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        [Required(ErrorMessage = "First Name is required")]
+        [Required]
         public string FirstName { get; set; }
-        [Required(ErrorMessage = "Middle Name is required")]
+        [Required]
         public string MiddleName { get; set; }
-        [Required(ErrorMessage = "Last Name is required")]
+        [Required]
         public string LastName { get; set; }
-        [Required(ErrorMessage = "Full Name is required")]
+        [Required]
         public string FullName { get; set; }
-        [Required(ErrorMessage = "Archived is required")]
+        [Required]
         public bool Archived { get; set; }
-        [Required(ErrorMessage = "Hire Date is required")]
+        [Required]
         public string HireDate { get; set; }
     }
 }
