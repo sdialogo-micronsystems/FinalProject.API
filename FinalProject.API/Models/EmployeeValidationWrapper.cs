@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalProject.API.Models
 {
-    public class EmployeeWrapperDTO
+    public class EmployeeValidationWrapper
     {
         public string FirstName { get; set; }
         [Required(ErrorMessage = "Middle Name is required")]

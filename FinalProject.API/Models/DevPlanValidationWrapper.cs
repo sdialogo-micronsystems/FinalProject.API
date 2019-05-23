@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FinalProject.API.Models
 {
-    public class DevPlanWrapperDTO
+    public class DevPlanValidationWrapper
     {
         [Required(ErrorMessage = "Title is required")]
         public string Title { get; set; }

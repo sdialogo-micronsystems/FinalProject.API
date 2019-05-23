@@ -1,4 +1,6 @@
-﻿using FinalProject.API.Models;
+﻿using FinalProject.API.Entities;
+using FinalProject.API.Models;
+using FinalProject.API.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,23 +12,30 @@ namespace FinalProject.API.Controllers
     [Route("api/devPlans")]
     public class DevPlansController : Controller
     {
+        private IDevPlanRepository _devPlanrepository;
+
+        public DevPlansController(IDevPlanRepository devPlanrepository)
+        {
+            _devPlanrepository = devPlanrepository;
+        }
+
         [HttpGet()]
         public IActionResult GetDevPlans()
         {
-            return Ok(DevPlansDataStore.Current.DevPlans);
+            return Ok(_devPlanrepository.GetDevPlans());
         }
 
         [HttpGet("{id}", Name = "GetDevPlan")]
         public IActionResult GetDevPlan(int id)
         {
-            var devPlanReturn = DevPlansDataStore.Current.DevPlans.FirstOrDefault(devPlan => devPlan.Id == id);
+            var devPlan = _devPlanrepository.GetDevPlan(id);
 
-            if(devPlanReturn == null)
+            if(devPlan == null)
             {
                 return NotFound();
             }
 
-            return Ok(devPlanReturn);
+            return Ok(devPlan);
         }
 
         [HttpPost("create")] 
@@ -59,7 +68,7 @@ namespace FinalProject.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateDevPlan(int id, [FromBody] DevPlanWrapperDTO devPlan)
+        public IActionResult UpdateDevPlan(int id, [FromBody] DevPlanValidationWrapper devPlan)
         {
             if (devPlan == null)
             {

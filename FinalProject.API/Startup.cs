@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization.Json;
 using System.Threading.Tasks;
 using FinalProject.API.Entities;
+using FinalProject.API.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -37,6 +38,10 @@ namespace FinalProject.API
 
             var connectionString = Startup.Configuration["connectionStrings:finalProjectDBConnectionString"];
             services.AddDbContext<FinalProjectContext>(o => o.UseSqlServer(connectionString));
+
+            //services.AddScoped<IFinalProjectRepository, FinalProjectRepository>();
+            services.AddScoped<IDevPlanRepository, DevPlanRepository>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -8,11 +8,16 @@ namespace FinalProject.API.Entities
 {
     public class FinalProjectContext : DbContext
     {
-        public FinalProjectContext(DbContextOptions<FinalProjectContext> options) 
+        public FinalProjectContext(DbContextOptions<FinalProjectContext> options)
             : base(options)
         {
             Database.Migrate();
         }
+
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Employee>().ToTable("WEWES");
+        //}
 
         public DbSet<DevPlan> DevPlans { get; set; }
         public DbSet<Employee> Employees { get; set; }

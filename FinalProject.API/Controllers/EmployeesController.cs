@@ -1,4 +1,5 @@
 ﻿using FinalProject.API.Models;
+using FinalProject.API.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,16 @@ namespace FinalProject.API.Controllers
     [Route("api/employees")]
     public class EmployeesController : Controller
     {
+        private IEmployeeRepository _employeeRepository;
+
+        public EmployeesController(IEmployeeRepository employeeRepository)
+        {
+            _employeeRepository = employeeRepository;
+        }
         [HttpGet()]
         public IActionResult GetEmployees()
         {
-            return Ok(EmployeesDataStore.Current.Employees);
+            return Ok(_employeeRepository.GetEmployees());
         }
 
         [HttpGet("{id}", Name ="GetEmployee")]
@@ -60,7 +67,7 @@ namespace FinalProject.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateEmployee(int id, [FromBody] EmployeeWrapperDTO employee)
+        public IActionResult UpdateEmployee(int id, [FromBody] EmployeeValidationWrapper employee)
         {
             if (employee == null)
             {

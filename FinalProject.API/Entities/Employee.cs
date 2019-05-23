@@ -24,5 +24,12 @@ namespace FinalProject.API.Entities
         public bool Archived { get; set; }
         [Required]
         public string HireDate { get; set; }
+
+        //public virtual IList<DevPlan> DevPlans { get; private set; }
+
+        //public Employee(IList<DevPlan> devPlans)
+        //{
+        //    DevPlans = devPlans;
+        //}
     }
 }

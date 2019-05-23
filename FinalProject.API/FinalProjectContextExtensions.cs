@@ -10,6 +10,11 @@ namespace FinalProject.API
     {
         public static void EnsureSeedDataForContext(this FinalProjectContext context)
         {
+            if (context.DevPlans.Any())
+            {
+                return;
+            }
+
             //init seed data
             var devPlans = new List<DevPlan>()
             {
