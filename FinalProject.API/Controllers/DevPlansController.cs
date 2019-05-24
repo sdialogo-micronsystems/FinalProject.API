@@ -12,29 +12,27 @@ namespace FinalProject.API.Controllers
     [Route("api/devPlans")]
     public class DevPlansController : Controller
     {
-        private IDevPlanRepository _devPlanrepository;
+        private IDevPlanRepository _devPlanRepository;
 
-        public DevPlansController(IDevPlanRepository devPlanrepository)
+        public DevPlansController(IDevPlanRepository devPlanRepository)
         {
-            _devPlanrepository = devPlanrepository;
+            _devPlanRepository = devPlanRepository;
         }
 
         [HttpGet()]
         public IActionResult GetDevPlans()
         {
-            return Ok(_devPlanrepository.GetDevPlans());
+            return Ok(_devPlanRepository.GetDevPlans());
         }
 
         [HttpGet("{id}", Name = "GetDevPlan")]
         public IActionResult GetDevPlan(int id)
         {
-            var devPlan = _devPlanrepository.GetDevPlan(id);
-
+            var devPlan = _devPlanRepository.GetDevPlan(id);
             if(devPlan == null)
             {
                 return NotFound();
             }
-
             return Ok(devPlan);
         }
 
@@ -51,18 +49,7 @@ namespace FinalProject.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            var newDevPlan = new DevPlanDTO()
-            {
-                Id = devPlan.Id,
-                Title = devPlan.Title,
-                Description = devPlan.Description,
-                EmployeeId = devPlan.EmployeeId,
-                StatusCode = devPlan.StatusCode,
-                DueDate = devPlan.DueDate
-            };
-
-            var currentDevPlans = DevPlansDataStore.Current.DevPlans;
-            currentDevPlans.Add(newDevPlan);
+            var newDevPlan = _devPlanRepository.CreateDevPlan(devPlan);
 
             return CreatedAtRoute("GetDevPlan", new { id = newDevPlan.Id}, newDevPlan);
         }

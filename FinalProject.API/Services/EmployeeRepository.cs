@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using FinalProject.API.Entities;
 using FinalProject.API.Models;
 
@@ -18,27 +19,16 @@ namespace FinalProject.API.Services
         public IEnumerable<EmployeeViewModel> GetEmployees()
         {
             var employeeEntities = _context.Employees.OrderBy(employee => employee.Id).ToList();
-            var employees = new List<EmployeeViewModel>();
-
-            foreach (var employeeEntity in employeeEntities)
-            {
-                employees.Add(new EmployeeViewModel
-                {
-                    Id = employeeEntity.Id,
-                    FirstName = employeeEntity.FirstName,
-                    MiddleName = employeeEntity.MiddleName,
-                    LastName = employeeEntity.LastName,
-                    FullName = employeeEntity.FullName,
-                    Archived = employeeEntity.Archived,
-                    HireDate = employeeEntity.HireDate
-                });
-            }
-
-            return employees;
+            return Mapper.Map<IEnumerable<EmployeeViewModel>>(employeeEntities);
         }
         public EmployeeViewModel GetEmployee(int employeeId)
         {
-            throw new NotImplementedException();
+            var employeeEntity = _context.Employees.Where(e => e.Id == employeeId).FirstOrDefault();
+            if(employeeEntity == null)
+            {
+                return null;
+            }
+            return Mapper.Map<EmployeeViewModel>(employeeEntity);
         }
     }
 }

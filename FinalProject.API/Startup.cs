@@ -37,9 +37,8 @@ namespace FinalProject.API
             services.AddCors();
 
             var connectionString = Startup.Configuration["connectionStrings:finalProjectDBConnectionString"];
-            services.AddDbContext<FinalProjectContext>(o => o.UseSqlServer(connectionString));
+            services.AddDbContext<FinalProjectContext>(options => options.UseNpgsql(connectionString));
 
-            //services.AddScoped<IFinalProjectRepository, FinalProjectRepository>();
             services.AddScoped<IDevPlanRepository, DevPlanRepository>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
         }
@@ -55,9 +54,16 @@ namespace FinalProject.API
             finalProjectContext.EnsureSeedDataForContext();
 
             app.UseStatusCodePages();
+
             app.UseCors(
                 options => options.WithOrigins("http://localhost:8080").AllowAnyMethod().AllowAnyHeader());
+
             app.UseMvc();
+
+            AutoMapper.Mapper.Initialize(cfg => {
+                cfg.CreateMap<Entities.DevPlan, Models.DevPlanViewModel>();
+                cfg.CreateMap<Entities.Employee, Models.EmployeeViewModel>();
+            });
         }
     }
 }

@@ -20,6 +20,7 @@ namespace FinalProject.API
             {
                 new DevPlan()
                 {
+                    Id = 1,
                     Title = "Securing React Apps with Auth0",
                     Description = "react-auth0-authentication-security",
                     StatusCode = "Completed",
@@ -28,6 +29,7 @@ namespace FinalProject.API
                 },
                 new DevPlan()
                 {
+                    Id = 2,
                     Title = "React: The Big Picture",
                     Description = "react-big-picture",
                     StatusCode = "In Progress",
@@ -40,6 +42,7 @@ namespace FinalProject.API
             {
                 new Employee()
                 {
+                    Id = 1,
                     LastName = "Jo",
                     FirstName = "Yuri",
                     MiddleName = "Yul",
@@ -49,6 +52,7 @@ namespace FinalProject.API
                 },
                 new Employee()
                 {
+                    Id = 2,
                     LastName = "Choi",
                     FirstName = "Yena",
                     MiddleName = "Duck",
@@ -58,6 +62,7 @@ namespace FinalProject.API
                 },
                 new Employee()
                 {
+                    Id = 3,
                     LastName = "Kwon",
                     FirstName = "Eunbi",
                     MiddleName = "Leader",

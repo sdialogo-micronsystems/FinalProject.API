@@ -26,14 +26,12 @@ namespace FinalProject.API.Controllers
         [HttpGet("{id}", Name ="GetEmployee")]
         public IActionResult GetEmployee(int id)
         {
-            var employeeReturn = EmployeesDataStore.Current.Employees.FirstOrDefault(employee => employee.Id == id);
-
-            if (employeeReturn == null)
+            var employee = _employeeRepository.GetEmployee(id);
+            if(employee == null)
             {
                 return NotFound();
             }
-
-            return Ok(employeeReturn);
+            return Ok(employee);
         }
 
         [HttpPost("create")]
