@@ -27,85 +27,37 @@ namespace FinalProject.API.Controllers
         public IActionResult GetEmployee(int id)
         {
             var employee = _employeeRepository.GetEmployee(id);
-            if(employee == null)
-            {
-                return NotFound();
-            }
+            if(employee == null) return NotFound(); 
             return Ok(employee);
         }
 
         [HttpPost("create")]
         public IActionResult CreateEmployee([FromBody] EmployeeDTO employee)
         {
-            if (employee == null)
-            {
-                return BadRequest();
-            }
+            if (employee == null) return BadRequest(); 
+            if(!ModelState.IsValid) return BadRequest(ModelState); 
 
-            if(!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var newEmployee = new EmployeeDTO()
-            {
-                Id = employee.Id,
-                FirstName = employee.FirstName,
-                MiddleName = employee.MiddleName,
-                LastName = employee.LastName,
-                FullName = employee.FullName,
-                Archived = employee.Archived,
-                HireDate = employee.HireDate
-            };
-
-            var currentEmployees = EmployeesDataStore.Current.Employees;
-            currentEmployees.Add(newEmployee);
-
+            var newEmployee = _employeeRepository.CreateEmployee(employee);
             return CreatedAtRoute("GetEmployee", new { id = newEmployee.Id }, newEmployee);
         }
 
         [HttpPut("{id}")]
         public IActionResult UpdateEmployee(int id, [FromBody] EmployeeValidationWrapper employee)
         {
-            if (employee == null)
-            {
-                return BadRequest();
-            }
+            if (employee == null) return BadRequest(); 
+            if (!ModelState.IsValid) return BadRequest(ModelState);  
+            if (_employeeRepository.GetEmployee(id) == null) return NotFound(); 
 
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var employeeToUpdate = EmployeesDataStore.Current.Employees.FirstOrDefault(e => e.Id == id);
-            if (employeeToUpdate == null)
-            {
-                return NotFound();
-            }
-
-            employeeToUpdate.FirstName = employee.FirstName;
-            employeeToUpdate.MiddleName = employee.MiddleName;
-            employeeToUpdate.LastName = employee.LastName;
-            employeeToUpdate.FullName = employee.FullName;
-            employeeToUpdate.Archived = employee.Archived;
-            employeeToUpdate.HireDate = employee.HireDate;
-
-            return CreatedAtRoute("GetEmployee", new { id = employeeToUpdate.Id }, employeeToUpdate);
+            var updatedEmployee = _employeeRepository.UpdateEmployee(id, employee);
+            return CreatedAtRoute("GetEmployee", new { id = updatedEmployee.Id }, updatedEmployee);
         }
 
         [HttpDelete("{id}")]
         public IActionResult DeleteEmployee(int id)
         {
-            var employee = EmployeesDataStore.Current.Employees.FirstOrDefault(e => e.Id == id);
+            if (_employeeRepository.GetEmployee(id) == null) return NotFound();
 
-            if (employee == null)
-            {
-                return NotFound();
-            }
-
-            var currentEmployees = EmployeesDataStore.Current.Employees;
-            currentEmployees.Remove(employee);
-
+            _employeeRepository.DeleteEmployee(id);
             return GetEmployees();
         }
     }

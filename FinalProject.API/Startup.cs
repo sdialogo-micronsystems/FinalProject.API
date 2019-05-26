@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace FinalProject.API
 {
@@ -52,17 +53,22 @@ namespace FinalProject.API
             }
 
             finalProjectContext.EnsureSeedDataForContext();
-
             app.UseStatusCodePages();
 
             app.UseCors(
                 options => options.WithOrigins("http://localhost:8080").AllowAnyMethod().AllowAnyHeader());
 
             app.UseMvc();
-
+            
             AutoMapper.Mapper.Initialize(cfg => {
                 cfg.CreateMap<Entities.DevPlan, Models.DevPlanViewModel>();
+                cfg.CreateMap<Models.DevPlanDTO, Entities.DevPlan>();
+                cfg.CreateMap<Models.DevPlanValidationWrapper, Entities.DevPlan>();
+                cfg.CreateMap<Models.DevPlanValidationWrapper, Models.DevPlanDTO>();
                 cfg.CreateMap<Entities.Employee, Models.EmployeeViewModel>();
+                cfg.CreateMap<Models.EmployeeDTO, Entities.Employee>();
+                cfg.CreateMap<Models.EmployeeValidationWrapper, Entities.Employee>();
+                cfg.CreateMap<Models.EmployeeValidationWrapper, Models.EmployeeDTO>();
             });
         }
     }

@@ -30,5 +30,30 @@ namespace FinalProject.API.Services
             }
             return Mapper.Map<EmployeeViewModel>(employeeEntity);
         }
+
+        public EmployeeViewModel CreateEmployee(EmployeeDTO employee)
+        {
+            var newEmployee = Mapper.Map<EmployeeViewModel>(employee);
+            _context.Employees.Add(Mapper.Map<Employee>(newEmployee));
+            _context.SaveChanges();
+
+            return newEmployee;
+        }
+
+        public EmployeeDTO UpdateEmployee(int employeeId, EmployeeValidationWrapper employee)
+        {
+            var toUpdate = _context.Employees.Where(e => e.Id == employeeId).FirstOrDefault();
+            Mapper.Map(employee, toUpdate);
+            _context.SaveChanges();
+
+            return Mapper.Map<EmployeeDTO>(toUpdate);
+        }
+
+        public void DeleteEmployee(int employeeId)
+        {
+            var toDelete = _context.Employees.Where(e => e.Id == employeeId).FirstOrDefault();
+            _context.Employees.Remove(toDelete);
+            _context.SaveChanges();
+        }
     }
 }

@@ -13,17 +13,17 @@ namespace FinalProject.API.Entities.EntityConfigurations
         {
             builder.HasKey(prop => prop.Id);
             builder.Property(prop => prop.Id).HasColumnType("SERIAL");
-            builder.Property(prop => prop.Title);
-            //.IsRequired();
-            builder.Property(prop => prop.Description);
-            //.IsRequired();
-            builder.Property(prop => prop.StatusCode);
-            //.IsRequired();
+            builder.Property(prop => prop.Title)
+            .IsRequired();
+            builder.Property(prop => prop.Description)
+            .IsRequired();
+            builder.Property(prop => prop.StatusCode)
+            .IsRequired();
             builder.Property(prop => prop.EmployeeId)
-                .HasColumnType("INTEGER");
-                //.IsRequired();
-            builder.Property(prop => prop.DueDate);
-                //.IsRequired();
+                .HasColumnType("INTEGER")
+                .IsRequired();
+            builder.Property(prop => prop.DueDate)
+                .IsRequired();
         }
     }
 }

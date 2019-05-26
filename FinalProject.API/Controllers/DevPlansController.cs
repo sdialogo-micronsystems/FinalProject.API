@@ -29,72 +29,37 @@ namespace FinalProject.API.Controllers
         public IActionResult GetDevPlan(int id)
         {
             var devPlan = _devPlanRepository.GetDevPlan(id);
-            if(devPlan == null)
-            {
-                return NotFound();
-            }
+            if(devPlan == null) return NotFound();
+
             return Ok(devPlan);
         }
 
         [HttpPost("create")] 
         public IActionResult CreateDevPlan([FromBody] DevPlanDTO devPlan)
         {
-            if (devPlan == null)
-            {
-                return BadRequest();
-            }
-
-            if(!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            if (devPlan == null) return BadRequest();
+            if(!ModelState.IsValid) return BadRequest(ModelState);
 
             var newDevPlan = _devPlanRepository.CreateDevPlan(devPlan);
-
             return CreatedAtRoute("GetDevPlan", new { id = newDevPlan.Id}, newDevPlan);
         }
 
         [HttpPut("{id}")]
         public IActionResult UpdateDevPlan(int id, [FromBody] DevPlanValidationWrapper devPlan)
         {
-            if (devPlan == null)
-            {
-                return BadRequest();
-            }
+            if (devPlan == null) return BadRequest();
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            if (_devPlanRepository.GetDevPlan(id) == null) return NotFound();
 
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var devPlanToUpdate = DevPlansDataStore.Current.DevPlans.FirstOrDefault(d => d.Id == id);
-            if(devPlanToUpdate == null)
-            {
-                return NotFound();
-            }
-
-            devPlanToUpdate.Title = devPlan.Title;
-            devPlanToUpdate.Description = devPlan.Description;
-            devPlanToUpdate.EmployeeId = devPlan.EmployeeId;
-            devPlanToUpdate.StatusCode = devPlan.StatusCode;
-            devPlanToUpdate.DueDate = devPlan.DueDate;
-
-            return CreatedAtRoute("GetDevPlan", new { id = devPlanToUpdate.Id }, devPlanToUpdate);
+            var updatedDevPlan = _devPlanRepository.UpdateDevPlan(id, devPlan);
+            return CreatedAtRoute("GetDevPlan", new { id = updatedDevPlan.Id }, updatedDevPlan);
         }
 
         [HttpDelete("{id}")]
         public IActionResult DeleteDevPlan(int id)
         {
-            var devPlan = DevPlansDataStore.Current.DevPlans.FirstOrDefault(d => d.Id == id);
-
-            if (devPlan == null)
-            {
-                return NotFound();
-            }
-
-            var currentDevPlans = DevPlansDataStore.Current.DevPlans;
-            currentDevPlans.Remove(devPlan);
-
+            if (_devPlanRepository.GetDevPlan(id) == null) return NotFound();
+            _devPlanRepository.DeleteDevPlan(id);
             return GetDevPlans();
         }
     }

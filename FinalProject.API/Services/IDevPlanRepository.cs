@@ -11,5 +11,7 @@ namespace FinalProject.API.Services
         IEnumerable<DevPlanViewModel> GetDevPlans();
         DevPlanViewModel GetDevPlan(int devPlanId);
         DevPlanViewModel CreateDevPlan(DevPlanDTO devPlan);
+        DevPlanDTO UpdateDevPlan(int devPlanId, DevPlanValidationWrapper devPlan);
+        void DeleteDevPlan(int devPlanId);
     }
 }
