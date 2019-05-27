@@ -38,7 +38,7 @@ namespace FinalProject.API.Services
         public DevPlanViewModel CreateDevPlan(DevPlanDTO devPlan)
         {
             var newDevPlan = Mapper.Map<DevPlanViewModel>(devPlan);
-            _context.DevPlans.Add(Mapper.Map<DevPlan>(devPlan));
+            _context.DevPlans.Add(Mapper.Map<DevPlan>(newDevPlan));
             _context.SaveChanges();
 
             return newDevPlan;

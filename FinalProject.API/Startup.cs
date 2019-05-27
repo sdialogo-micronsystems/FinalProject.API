@@ -30,8 +30,6 @@ namespace FinalProject.API
 
             Configuration = builder.Build();
         }
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
@@ -52,7 +50,7 @@ namespace FinalProject.API
                 app.UseDeveloperExceptionPage();
             }
 
-            finalProjectContext.EnsureSeedDataForContext();
+            //finalProjectContext.EnsureSeedDataForContext();
             app.UseStatusCodePages();
 
             app.UseCors(
@@ -65,10 +63,12 @@ namespace FinalProject.API
                 cfg.CreateMap<Models.DevPlanDTO, Entities.DevPlan>();
                 cfg.CreateMap<Models.DevPlanValidationWrapper, Entities.DevPlan>();
                 cfg.CreateMap<Models.DevPlanValidationWrapper, Models.DevPlanDTO>();
+                cfg.CreateMap<Models.DevPlanViewModel, Entities.DevPlan>();
                 cfg.CreateMap<Entities.Employee, Models.EmployeeViewModel>();
                 cfg.CreateMap<Models.EmployeeDTO, Entities.Employee>();
                 cfg.CreateMap<Models.EmployeeValidationWrapper, Entities.Employee>();
                 cfg.CreateMap<Models.EmployeeValidationWrapper, Models.EmployeeDTO>();
+                cfg.CreateMap<Models.EmployeeViewModel, Entities.Employee>();
             });
         }
     }

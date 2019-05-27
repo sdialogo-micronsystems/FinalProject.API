@@ -2,15 +2,17 @@
 using FinalProject.API.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace FinalProject.API.Migrations
 {
     [DbContext(typeof(FinalProjectContext))]
-    partial class FinalProjectContextModelSnapshot : ModelSnapshot
+    [Migration("20190527014922_change_to_postgres_server")]
+    partial class change_to_postgres_server
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,8 +42,6 @@ namespace FinalProject.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EmployeeId");
-
                     b.ToTable("DevPlans");
                 });
 
@@ -70,14 +70,6 @@ namespace FinalProject.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Employees");
-                });
-
-            modelBuilder.Entity("FinalProject.API.Entities.DevPlan", b =>
-                {
-                    b.HasOne("FinalProject.API.Entities.Employee", "Employee")
-                        .WithMany("DevPlans")
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

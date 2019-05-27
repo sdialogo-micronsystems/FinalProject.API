@@ -12,7 +12,6 @@ namespace FinalProject.API.Entities.EntityConfigurations
         public void Configure(EntityTypeBuilder<DevPlan> builder)
         {
             builder.HasKey(prop => prop.Id);
-            builder.Property(prop => prop.Id).HasColumnType("SERIAL");
             builder.Property(prop => prop.Title)
             .IsRequired();
             builder.Property(prop => prop.Description)
