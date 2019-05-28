@@ -35,6 +35,42 @@ namespace FinalProject.API
                     StatusCode = "In Progress",
                     EmployeeId = 2,
                     DueDate = "2019-05-01"
+                },
+                new DevPlan()
+                {
+                    Id = 3,
+                    Title = "Creating Reusable React Components",
+                    Description = "react-creating-reusable-components",
+                    StatusCode = "Not Started",
+                    EmployeeId = 3,
+                    DueDate = "2019-05-01"
+                },
+                new DevPlan()
+                {
+                    Id = 4,
+                    Title = "Building a JavaScript Development Environment",
+                    Description = "javascript-development-environment",
+                    StatusCode = "Not Started",
+                    EmployeeId = 4,
+                    DueDate = "2019-05-01"
+                },
+                new DevPlan()
+                {
+                    Id = 5,
+                    Title = "Building Applications with React and Redux",
+                    Description = "react-redux-react-router-es6",
+                    StatusCode = "Not Started",
+                    EmployeeId = 3,
+                    DueDate = "2019-05-01"
+                },
+                new DevPlan()
+                {
+                    Id = 6,
+                    Title = "Building Applications in React and Flux",
+                    Description = "react-flux-building-applications",
+                    StatusCode = "Not Started",
+                    EmployeeId = 4,
+                    DueDate = "2019-05-01"
                 }
             };
 
@@ -43,30 +79,40 @@ namespace FinalProject.API
                 new Employee()
                 {
                     Id = 1,
-                    LastName = "Jo",
-                    FirstName = "Yuri",
-                    MiddleName = "Yul",
-                    FullName = "Yuri Yul Jo",
+                    LastName = "Dialogo",
+                    FirstName = "Sandra",
+                    MiddleName = "Surita",
+                    FullName = "Sandra Surita Dialogo",
                     Archived = false,
                     HireDate = "2019-05-01"
                 },
                 new Employee()
                 {
                     Id = 2,
-                    LastName = "Choi",
-                    FirstName = "Yena",
-                    MiddleName = "Duck",
-                    FullName = "Yena Duck Choi",
+                    LastName = "Tingson",
+                    FirstName = "Patrixia",
+                    MiddleName = "Bearis",
+                    FullName = "Patrixia Bearis Tingson",
                     Archived = false,
                     HireDate = "2019-05-01"
                 },
                 new Employee()
                 {
                     Id = 3,
-                    LastName = "Kwon",
-                    FirstName = "Eunbi",
-                    MiddleName = "Leader",
-                    FullName = "Eunbi Leader Kwon",
+                    LastName = "Leonardo",
+                    FirstName = "Isaiah",
+                    MiddleName = "Valentin",
+                    FullName = "Isaiah Valentin Leonardo",
+                    Archived = false,
+                    HireDate = "2019-05-01"
+                },
+                new Employee()
+                {
+                    Id = 4,
+                    LastName = "Dialogo",
+                    FirstName = "Danica",
+                    MiddleName = "Surita",
+                    FullName = "Danica Surita Dialogo",
                     Archived = false,
                     HireDate = "2019-05-01"
                 }

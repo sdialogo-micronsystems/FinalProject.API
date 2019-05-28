@@ -24,10 +24,7 @@ namespace FinalProject.API.Services
         public EmployeeViewModel GetEmployee(int employeeId)
         {
             var employeeEntity = _context.Employees.Where(e => e.Id == employeeId).FirstOrDefault();
-            if(employeeEntity == null)
-            {
-                return null;
-            }
+            if(employeeEntity == null) return null; 
             return Mapper.Map<EmployeeViewModel>(employeeEntity);
         }
 

@@ -28,10 +28,7 @@ namespace FinalProject.API.Services
         public DevPlanViewModel GetDevPlan(int devPlanId)
         {
             var devPlanEntity = _context.DevPlans.Where(d => d.Id == devPlanId).FirstOrDefault();
-            if (devPlanEntity == null)
-            {
-                return null;
-            }
+            if (devPlanEntity == null) return null; 
             return Mapper.Map<DevPlanViewModel>(devPlanEntity);
         }
 
