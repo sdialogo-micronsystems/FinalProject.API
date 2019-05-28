@@ -13,12 +13,8 @@ namespace FinalProject.API.Entities
             : base(options)
         {
             Database.Migrate();
+            this.EnsureSeedDataForContext();
         }
-
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseNpgsql("Server=localhost; Port=5432; Database=FinalProjectCodeFirstDB; Username=postgres; Password=password");
-        //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

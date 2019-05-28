@@ -15,7 +15,6 @@ namespace FinalProject.API
                 return;
             }
 
-            //init seed data
             var devPlans = new List<DevPlan>()
             {
                 new DevPlan()

@@ -50,7 +50,7 @@ namespace FinalProject.API
                 app.UseDeveloperExceptionPage();
             }
 
-            finalProjectContext.EnsureSeedDataForContext();
+            //finalProjectContext.EnsureSeedDataForContext();
             app.UseStatusCodePages();
 
             app.UseCors(

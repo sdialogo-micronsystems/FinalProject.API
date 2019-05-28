@@ -9,8 +9,6 @@ namespace FinalProject.API.Entities
 {
     public class DevPlan
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
