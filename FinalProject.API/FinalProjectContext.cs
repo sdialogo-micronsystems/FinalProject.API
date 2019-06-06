@@ -13,13 +13,13 @@ namespace FinalProject.API.Entities
             : base(options)
         {
             Database.Migrate();
-            this.EnsureSeedDataForContext();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new DevPlanConfiguration());
             modelBuilder.ApplyConfiguration(new EmployeeConfiguration());
+            modelBuilder.Seed();
         }
 
         public DbSet<DevPlan> DevPlans { get; set; }
