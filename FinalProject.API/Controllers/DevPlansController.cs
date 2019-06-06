@@ -58,9 +58,11 @@ namespace FinalProject.API.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteDevPlan(int id)
         {
-            if (_devPlanRepository.GetDevPlan(id) == null) return NotFound();
+            var toDelete = _devPlanRepository.GetDevPlan(id);
+            if (toDelete == null) return NotFound();
             _devPlanRepository.DeleteDevPlan(id);
-            return GetDevPlans();
+
+            return Ok(toDelete);
         }
     }
 }

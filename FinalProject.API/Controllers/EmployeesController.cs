@@ -28,6 +28,7 @@ namespace FinalProject.API.Controllers
         {
             var employee = _employeeRepository.GetEmployee(id);
             if(employee == null) return NotFound(); 
+
             return Ok(employee);
         }
 
@@ -35,7 +36,7 @@ namespace FinalProject.API.Controllers
         public IActionResult CreateEmployee([FromBody] EmployeeDTO employee)
         {
             if (employee == null) return BadRequest(); 
-            if(!ModelState.IsValid) return BadRequest(ModelState); 
+            if (!ModelState.IsValid) return BadRequest(ModelState); 
 
             var newEmployee = _employeeRepository.CreateEmployee(employee);
             return CreatedAtRoute("GetEmployee", new { id = newEmployee.Id }, newEmployee);
@@ -55,16 +56,19 @@ namespace FinalProject.API.Controllers
         [HttpDelete("{id}")]
         public IActionResult DeleteEmployee(int id)
         {
-            if (_employeeRepository.GetEmployee(id) == null) return NotFound();
-
+            var toDelete = _employeeRepository.GetEmployee(id);
+            if (toDelete == null) return NotFound();
             _employeeRepository.DeleteEmployee(id);
-            return GetEmployees();
+
+            return Ok(toDelete);
         }
+
         [HttpGet("assignedDevPlans/{id}")]
         public IActionResult GetAssignedDevPlans(int id)
         {
             if (_employeeRepository.GetEmployee(id) == null) return NotFound();
             var result = _employeeRepository.GetAssignedDevPlans(id);
+
             return Ok(result);
         }
     }
