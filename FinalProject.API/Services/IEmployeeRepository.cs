@@ -13,5 +13,6 @@ namespace FinalProject.API.Services
         EmployeeViewModel CreateEmployee(EmployeeDTO employee);
         EmployeeDTO UpdateEmployee(int employeeId, EmployeeValidationWrapper employee);
         void DeleteEmployee(int employeeId);
+        IEnumerable<DevPlanViewModel> GetAssignedDevPlans(int employeeId);
     }
 }

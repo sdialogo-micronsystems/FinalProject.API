@@ -24,7 +24,7 @@ namespace FinalProject.API
                     Description = "react-auth0-authentication-security",
                     StatusCode = "Completed",
                     EmployeeId = 1,
-                    DueDate = "2019-05-01"
+                    DueDate = new DateTime(2019,05,01)
                 },
                 new DevPlan()
                 {
@@ -33,7 +33,7 @@ namespace FinalProject.API
                     Description = "react-big-picture",
                     StatusCode = "In Progress",
                     EmployeeId = 2,
-                    DueDate = "2019-05-01"
+                    DueDate = new DateTime(2019,08,07)
                 },
                 new DevPlan()
                 {
@@ -42,7 +42,7 @@ namespace FinalProject.API
                     Description = "react-creating-reusable-components",
                     StatusCode = "Not Started",
                     EmployeeId = 3,
-                    DueDate = "2019-05-01"
+                    DueDate = new DateTime(2019,10,12)
                 },
                 new DevPlan()
                 {
@@ -51,7 +51,7 @@ namespace FinalProject.API
                     Description = "javascript-development-environment",
                     StatusCode = "Not Started",
                     EmployeeId = 4,
-                    DueDate = "2019-05-01"
+                    DueDate = new DateTime(2019,12,06)
                 },
                 new DevPlan()
                 {
@@ -60,7 +60,7 @@ namespace FinalProject.API
                     Description = "react-redux-react-router-es6",
                     StatusCode = "Not Started",
                     EmployeeId = 3,
-                    DueDate = "2019-05-01"
+                    DueDate = new DateTime(2019,11,19)
                 },
                 new DevPlan()
                 {
@@ -69,7 +69,7 @@ namespace FinalProject.API
                     Description = "react-flux-building-applications",
                     StatusCode = "Not Started",
                     EmployeeId = 4,
-                    DueDate = "2019-05-01"
+                    DueDate = new DateTime(2019,12,13)
                 }
             };
 
@@ -83,7 +83,7 @@ namespace FinalProject.API
                     MiddleName = "Surita",
                     FullName = "Sandra Surita Dialogo",
                     Archived = false,
-                    HireDate = "2019-05-01"
+                    HireDate = new DateTime(2019,05,01)
                 },
                 new Employee()
                 {
@@ -93,7 +93,7 @@ namespace FinalProject.API
                     MiddleName = "Bearis",
                     FullName = "Patrixia Bearis Tingson",
                     Archived = false,
-                    HireDate = "2019-05-01"
+                    HireDate = new DateTime(2019,05,01)
                 },
                 new Employee()
                 {
@@ -103,7 +103,7 @@ namespace FinalProject.API
                     MiddleName = "Valentin",
                     FullName = "Isaiah Valentin Leonardo",
                     Archived = false,
-                    HireDate = "2019-05-01"
+                    HireDate = new DateTime(2019,08,07)
                 },
                 new Employee()
                 {
@@ -113,7 +113,7 @@ namespace FinalProject.API
                     MiddleName = "Surita",
                     FullName = "Danica Surita Dialogo",
                     Archived = false,
-                    HireDate = "2019-05-01"
+                    HireDate = new DateTime(2019,12,06)
                 }
             };
 

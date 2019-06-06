@@ -15,7 +15,7 @@ namespace FinalProject.API.Entities
         public string StatusCode { get; set; }
         [ForeignKey("Employee")]
         public int EmployeeId { get; set; }
-        public string DueDate { get; set; }
+        public DateTime DueDate { get; set; }
         public virtual Employee Employee { get; set; }
     }
 }

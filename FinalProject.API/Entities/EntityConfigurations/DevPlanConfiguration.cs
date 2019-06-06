@@ -19,7 +19,6 @@ namespace FinalProject.API.Entities.EntityConfigurations
             builder.Property(prop => prop.StatusCode)
             .IsRequired();
             builder.Property(prop => prop.EmployeeId)
-                .HasColumnType("INTEGER")
                 .IsRequired();
             builder.Property(prop => prop.DueDate)
                 .IsRequired();

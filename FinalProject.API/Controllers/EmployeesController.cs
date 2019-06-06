@@ -60,5 +60,12 @@ namespace FinalProject.API.Controllers
             _employeeRepository.DeleteEmployee(id);
             return GetEmployees();
         }
+        [HttpGet("assignedDevPlans/{id}")]
+        public IActionResult GetAssignedDevPlans(int id)
+        {
+            if (_employeeRepository.GetEmployee(id) == null) return NotFound();
+            var result = _employeeRepository.GetAssignedDevPlans(id);
+            return Ok(result);
+        }
     }
 }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using FinalProject.API.Entities;
 using FinalProject.API.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace FinalProject.API.Services
 {
@@ -18,6 +19,7 @@ namespace FinalProject.API.Services
 
         public IEnumerable<EmployeeViewModel> GetEmployees()
         {
+            //var employeeEntities = _context.Employees.Include(c => c.DevPlans).OrderBy(employee => employee.Id).ToList();
             var employeeEntities = _context.Employees.OrderBy(employee => employee.Id).ToList();
             return Mapper.Map<IEnumerable<EmployeeViewModel>>(employeeEntities);
         }
@@ -51,6 +53,14 @@ namespace FinalProject.API.Services
             var toDelete = _context.Employees.Where(e => e.Id == employeeId).FirstOrDefault();
             _context.Employees.Remove(toDelete);
             _context.SaveChanges();
+        }
+
+        public IEnumerable<DevPlanViewModel> GetAssignedDevPlans(int employeeId)
+        {
+            var assignedDevPlans = _context.Employees
+                                    .Where(e => e.Id == employeeId)
+                                    .Select(col => col.DevPlans).FirstOrDefault().ToList();
+            return Mapper.Map<IEnumerable<DevPlanViewModel>>(assignedDevPlans);
         }
     }
 }

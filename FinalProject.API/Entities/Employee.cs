@@ -15,7 +15,7 @@ namespace FinalProject.API.Entities
         public string LastName { get; set; }
         public string FullName { get; set; }
         public bool Archived { get; set; }
-        public string HireDate { get; set; }
+        public DateTime HireDate { get; set; }
         public virtual ICollection<DevPlan> DevPlans { get; set; }
     }
 }
