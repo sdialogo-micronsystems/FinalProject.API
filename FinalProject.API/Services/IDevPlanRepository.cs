@@ -12,6 +12,6 @@ namespace FinalProject.API.Services
         DevPlanViewModel GetDevPlan(int devPlanId);
         DevPlanViewModel CreateDevPlan(DevPlanDTO devPlan);
         DevPlanDTO UpdateDevPlan(int devPlanId, DevPlanValidationWrapper devPlan);
-        void DeleteDevPlan(int devPlanId);
+        DevPlanViewModel DeleteDevPlan(int devPlanId);
     }
 }
